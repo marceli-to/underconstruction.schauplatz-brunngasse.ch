@@ -1,0 +1,21 @@
+<div 
+  x-data="{ selected: null }"
+  x-init="
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#item-')) {
+      const targetElement = document.querySelector(hash);
+      if (targetElement) {
+        const allAccordions = $el.querySelectorAll('[id^=\'item-\']');
+        const index = Array.from(allAccordions).indexOf(targetElement);
+        if (index !== -1) {
+          selected = index;
+          setTimeout(() => {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
+        }
+      }
+    }
+  "
+  class="border-t-6 lg:border-t-9 border-{{ accordion_border_top_color }}">
+  {{ slot }}
+</div>

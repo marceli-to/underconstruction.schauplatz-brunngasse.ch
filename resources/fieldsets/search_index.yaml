@@ -1,0 +1,16 @@
+title: Suchindex
+fields:
+  -
+    handle: exclude_from_search
+    field:
+      type: toggle
+      display: 'Indexierung verhindern'
+      instructions: 'Seiteninhalt  von der Suche ausschliessen'
+      localizable: false
+  -
+    handle: searchable_content
+    field:
+      type: markdown
+      display: Suchinhalt
+      localizable: true
+      visibility: read_only

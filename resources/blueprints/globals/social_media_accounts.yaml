@@ -1,0 +1,30 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: instagram
+            field:
+              type: text
+              display: Instagram
+              localizable: true
+          -
+            handle: facebook
+            field:
+              type: text
+              display: Facebook
+              localizable: true
+          -
+            handle: linkedin
+            field:
+              type: text
+              display: LinkedIn
+              localizable: true
+          -
+            handle: youtube
+            field:
+              type: text
+              display: Youtube
+              localizable: true

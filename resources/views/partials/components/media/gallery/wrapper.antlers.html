@@ -1,0 +1,43 @@
+{{ images }}
+  {{ if first }}
+    <div class="md:mb-30 lg:mb-60 relative">
+      {{ partial:components/media/gallery/item 
+        :image="image_large"
+        :sizes="['2xl', 'xl', 'lg']" 
+        class="!hidden md:!block w-full h-full object-cover aspect-[16/9]"
+        fancybox="gallery-home-desktop"
+      }}
+    </div>
+    <div class="md:hidden">
+      {{ partial:components/media/gallery/item 
+        :image="image_small"
+        :sizes="['2xl', 'xl', 'lg']" 
+        class="w-full h-full object-cover aspect-square md:!hidden"
+        fancybox="gallery-home-mobile"
+      }}
+    </div>
+  {{ else }}
+    <a 
+      href="{{ glide:image_large preset="lightbox"}}"
+      data-fancybox="gallery-home-desktop" 
+      data-bg-color="bg-{{ lightbox_background }}"
+      {{ if site:short_locale == "de" }}
+        data-caption="{{ image_large:alt_de }}"
+      {{ elseif site:short_locale == "en" }}
+        data-caption="{{ image_large:alt_en }}"
+      {{ /if }}
+      class="hidden md:!block">
+    </a>
+    <a 
+      href="{{ glide:image_small preset="lightbox"}}"
+      data-fancybox="gallery-home-mobile" 
+      data-bg-color="bg-{{ lightbox_background }}"
+      {{ if site:short_locale == "de" }}
+        data-caption="{{ image_small:alt_de }}"
+      {{ elseif site:short_locale == "en" }}
+        data-caption="{{ image_small:alt_en }}"
+      {{ /if }}
+      class="block md:!hidden">
+    </a>
+  {{ /if }}
+{{ /images }}

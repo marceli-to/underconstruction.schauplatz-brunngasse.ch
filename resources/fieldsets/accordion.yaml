@@ -1,0 +1,85 @@
+title: Akkordeon
+fields:
+  -
+    import: border
+    prefix: accordion_
+  -
+    handle: accordion_elements
+    field:
+      type: replicator
+      display: Elemente
+      localizable: true
+      collapse: true
+      sets:
+        accordion_elements:
+          display: Elemente
+          instructions: 'Elemente hinzufügen'
+          icon: form-drop-down-menu
+          sets:
+            accordion_elements:
+              display: 'Akkordeon Eintrag'
+              icon: form-drop-down-menu
+              fields:
+                -
+                  handle: slug
+                  field:
+                    type: slug
+                    display: Slug
+                    localizable: false
+                    from: accordion_title
+                    show_regenerate: true
+                -
+                  handle: accordion_title
+                  field:
+                    type: text
+                    display: Titel
+                    localizable: false
+                    validate:
+                      - required
+                -
+                  handle: accordion_element_contents
+                  field:
+                    type: replicator
+                    display: Inhalte
+                    localizable: false
+                    collapse: true
+                    sets:
+                      accordion_element_contents:
+                        display: Inhalte
+                        sets:
+                          editor:
+                            display: Texteditor
+                            instructions: 'Texteditor hinzufügen'
+                            icon: text-formatting-markdown
+                            fields:
+                              -
+                                import: editor
+                          single_image:
+                            display: Einzelbild
+                            instructions: 'Einzelbild hinzufügen'
+                            icon: media-image-picture-orientation
+                            fields:
+                              -
+                                import: single_image
+                          spacer:
+                            display: Abstand
+                            instructions: 'Zusätzlicher Abstand nach unten einfügen'
+                            icon: layout-split-horizontal
+                            fields:
+                              -
+                                handle: spacer
+                                field:
+                                  type: spacer
+                                  display: Abstand
+                                  localizable: false
+                                  instructions: 'Erzeugt einen Abstand nach unten'
+                          press_reviews:
+                            display: Pressespiegel
+                            instructions: 'Pressespiegel hinzufügen'
+                            icon: file-content-list
+                            fields: {  }
+                          publications:
+                            display: Publikationen
+                            instructions: 'Publikationen/Vorträge hinzufügen'
+                            icon: file-content-list
+                            fields: {  }

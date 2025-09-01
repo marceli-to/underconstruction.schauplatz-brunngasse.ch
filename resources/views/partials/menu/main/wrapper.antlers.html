@@ -1,0 +1,26 @@
+<div 
+  class="fixed left-0 top-145 lg:top-200 w-full z-10 px-16 lg:px-0"
+  x-cloak 
+  x-show="isOpen"
+  x-transition:enter="transition ease-out duration-100"
+  x-transition:enter-start="opacity-0"
+  x-transition:enter-end="opacity-100"
+  x-transition:leave="transition ease-in duration-0"
+  x-transition:leave-start="opacity-100"
+  x-transition:leave-end="opacity-0">
+
+  <div class="flex justify-between items-center mb-30 lg:hidden">
+    {{ partial:menu/language/wrapper }}
+    {{ partial:menu/search/button }}
+  </div>
+  
+  <nav class="flex flex-col gap-y-15 lg:gap-y-20 w-full mx-auto max-w-outer-container lg:px-30">
+    <ul class="border-t-6 lg:border-t-9 border-mystiris text-2xl lg:text-3xl font-feixen-sans-medium leading-none">
+      {{ nav:main }}
+        {{ partial:menu/main/item }}
+      {{ /nav:main }}
+    </ul>
+    {{ partial:menu/meta/wrapper }}
+  </nav>
+
+</div>

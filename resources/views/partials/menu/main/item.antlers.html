@@ -1,0 +1,12 @@
+<li>
+  <a 
+    href="{{ url }}" 
+    class="block w-full pt-7 pb-8 lg:pt-11 lg:pb-12 border-b-6 lg:border-b-9 border-{{ border_bottom_color }} flex items-center relative group"
+    target="{{ is_external ? '_blank' : '_self' }}"
+    title="{{ title }}">
+    <span class="block absolute left-0 top-1/2 -translate-y-1/2 size-20 lg:size-30 bg-black rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 group-hover:duration-500 group-hover:delay-100 {{ is_current || is_parent ? 'opacity-100' : '' }}"></span>
+    <span class="translate-x-0 group-hover:translate-x-30 group-hover:lg:translate-x-45 transition-transform duration-300 {{ is_current || is_parent ? 'translate-x-30 lg:translate-x-45' : '' }}">
+      {{ title }}
+    </span>
+  </a>
+</li>

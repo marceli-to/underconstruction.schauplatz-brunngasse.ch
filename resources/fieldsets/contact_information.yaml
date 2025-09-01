@@ -1,0 +1,9 @@
+title: Kontakinformationen
+fields:
+  -
+    handle: is_contact
+    field:
+      default: true
+      type: toggle
+      display: 'Kontaktseite?'
+      localizable: false

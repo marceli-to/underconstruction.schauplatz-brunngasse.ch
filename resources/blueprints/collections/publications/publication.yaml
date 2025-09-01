@@ -1,0 +1,117 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              localizable: true
+              validate:
+                - required
+          -
+            handle: image
+            field:
+              max_files: 1
+              container: assets
+              type: assets
+              display: Bild
+              localizable: true
+          -
+            handle: description
+            field:
+              buttons:
+                - h2
+                - h3
+                - bold
+                - italic
+                - unorderedlist
+                - removeformat
+                - anchor
+                - lead
+              toolbar_mode: floating
+              remove_empty_nodes: true
+              type: bard
+              display: Beschreibung
+              localizable: true
+              sets:
+                editor_elements:
+                  display: Elemente
+                  icon: addon-boxes-stack
+                  sets:
+                    link:
+                      display: Weblink
+                      instructions: 'Webseite/Datei verlinken'
+                      icon: link
+                      fields:
+                        -
+                          handle: link
+                          field:
+                            collections:
+                              - pages
+                            container: assets
+                            type: link
+                            display: Link
+                            localizable: false
+                        -
+                          handle: link_text
+                          field:
+                            type: text
+                            display: Linktext
+                            localizable: false
+                        -
+                          handle: target
+                          field:
+                            options:
+                              -
+                                key: _self
+                                value: 'Gleiches Fenster'
+                              -
+                                key: _blank
+                                value: 'Neues Fenster'
+                            default: _self
+                            type: select
+                            display: 'Öffnen in'
+                            localizable: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: tags
+            field:
+              type: terms
+              taxonomies:
+                - tags
+              display: Tags
+              mode: select
+              localizable: false
+              max_items: 1
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - publications
+              max_items: 1
+              listable: false
+              localizable: true
+  settings:
+    display: Einstellungen
+    sections:
+      -
+        display: Einstellungen
+        fields:
+          -
+            import: search_index
+title: Publikationen

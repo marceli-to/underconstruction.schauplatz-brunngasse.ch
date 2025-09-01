@@ -1,0 +1,212 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: is_latest
+            field:
+              type: toggle
+              display: 'Störer?'
+              instructions: 'Anwählen um den Eintrag als Störer auf der Startseite zu publizieren.'
+              localizable: false
+          -
+            handle: agenda_date
+            field:
+              type: date
+              display: Datum
+              localizable: false
+              width: 66
+          -
+            handle: agenda_time
+            field:
+              type: time
+              display: Zeit
+              localizable: false
+              width: 33
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              display: Titel
+              localizable: true
+              validate:
+                - required
+          -
+            handle: summary
+            field:
+              buttons:
+                - bold
+                - removeformat
+                - anchor
+              toolbar_mode: floating
+              remove_empty_nodes: true
+              link_collections:
+                - pages
+              container: assets
+              type: bard
+              display: Zusammenfassung
+              localizable: true
+          -
+            import: single_image
+          -
+            handle: description
+            field:
+              buttons:
+                - h2
+                - h3
+                - bold
+                - unorderedlist
+                - removeformat
+                - anchor
+                - nobr
+                - lead
+              remove_empty_nodes: true
+              type: bard
+              display: Beschreibung
+              localizable: true
+              toolbar_mode: floating
+              instructions: 'Kurzfassung des Inhalts für die Startseite'
+              sets:
+                editor_elements:
+                  display: Elemente
+                  icon: addon-boxes-stack
+                  sets:
+                    link:
+                      display: Weblink
+                      instructions: 'Webseite verlinken'
+                      icon: link
+                      fields:
+                        -
+                          handle: link
+                          field:
+                            collections:
+                              - pages
+                            container: assets
+                            type: link
+                            display: Link
+                            localizable: false
+                        -
+                          handle: link_text
+                          field:
+                            type: text
+                            display: 'Link Text'
+                            localizable: false
+                        -
+                          handle: target
+                          field:
+                            options:
+                              -
+                                key: _self
+                                value: 'Gleiches Fenster'
+                              -
+                                key: _blank
+                                value: 'Neues Fenster'
+                            default: _self
+                            type: select
+                            display: 'Öffnen in'
+                            localizable: false
+          -
+            handle: editor
+            field:
+              buttons:
+                - h2
+                - h3
+                - bold
+                - unorderedlist
+                - removeformat
+                - anchor
+                - nobr
+                - lead
+              remove_empty_nodes: true
+              type: bard
+              display: Text
+              localizable: true
+              toolbar_mode: floating
+              sets:
+                editor_elements:
+                  display: Elemente
+                  icon: addon-boxes-stack
+                  sets:
+                    link:
+                      display: Weblink
+                      instructions: 'Webseite verlinken'
+                      icon: link
+                      fields:
+                        -
+                          handle: link
+                          field:
+                            collections:
+                              - pages
+                            container: assets
+                            type: link
+                            display: Link
+                            localizable: false
+                        -
+                          handle: link_text
+                          field:
+                            type: text
+                            display: 'Link Text'
+                            localizable: false
+                        -
+                          handle: target
+                          field:
+                            options:
+                              -
+                                key: _self
+                                value: 'Gleiches Fenster'
+                              -
+                                key: _blank
+                                value: 'Neues Fenster'
+                            default: _self
+                            type: select
+                            display: 'Öffnen in'
+                            localizable: false
+                    link_mail:
+                      display: Maillink
+                      instructions: 'E-Mail verlinken'
+                      icon: link
+                      fields:
+                        -
+                          handle: email
+                          field:
+                            type: text
+                            display: E-Mail
+                            localizable: false
+                        -
+                          handle: link_text
+                          field:
+                            type: text
+                            display: 'Link Text'
+                            localizable: false
+  settings:
+    display: Einstellungen
+    sections:
+      -
+        display: 'Neuer Abschnitt'
+        fields:
+          -
+            import: search_index
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - agenda
+              max_items: 1
+              listable: false
+              localizable: true
+title: Agenda

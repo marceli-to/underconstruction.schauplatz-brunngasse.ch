@@ -1,0 +1,52 @@
+title: Bildergalerie
+fields:
+  -
+    handle: images
+    field:
+      type: grid
+      display: Bilder
+      localizable: false
+      mode: stacked
+      add_row: 'Bild hinzufügen'
+      fields:
+        -
+          handle: image_large
+          field:
+            max_files: 1
+            container: assets
+            type: assets
+            display: 'Bild (Desktop)'
+            localizable: false
+            width: 50
+        -
+          handle: image_small
+          field:
+            max_files: 1
+            container: assets
+            type: assets
+            display: 'Bild (Mobile)'
+            localizable: false
+            width: 50
+        -
+          handle: lightbox_background
+          field:
+            options:
+              -
+                key: mystiris
+                value: Violett
+              -
+                key: verdique
+                value: Grün
+              -
+                key: flareon
+                value: Rot
+              -
+                key: sunella
+                value: Orange
+              -
+                key: blushra
+                value: Rosa
+            type: select
+            display: 'Hintergrund (Lightbox)'
+            localizable: false
+            default: mystiris

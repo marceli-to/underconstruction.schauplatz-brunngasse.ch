@@ -1,0 +1,12 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: opening_hours
+            field:
+              type: textarea
+              display: Öffnungszeiten
+              localizable: true

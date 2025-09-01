@@ -1,0 +1,20 @@
+title: Seitentitel
+fields:
+  -
+    handle: title
+    field:
+      type: text
+      display: Titel
+      localizable: true
+      validate:
+        - required
+  -
+    import: border
+    prefix: title_
+  -
+    handle: display
+    field:
+      default: true
+      type: toggle
+      display: 'Anzeigen?'
+      localizable: false

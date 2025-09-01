@@ -1,0 +1,14 @@
+<a 
+  href="javascript:;" 
+  x-on:click="toggle()" 
+  title="Menü anzeigen"
+  class="w-40 h-33 lg:w-50 lg:h-44 flex items-center justify-center">
+  <span x-show="!isOpen" class="w-40 h-29 lg:w-50 lg:h-36">
+    {{ partial:icons/burger class="w-full h-auto lg:hidden" size="small" }}
+    {{ partial:icons/burger class="w-full h-auto hidden lg:block" }}
+  </span>
+  <span x-show="isOpen" class="w-33 h-33 lg:w-44 lg:h-44">
+    {{ partial:icons/cross class="w-full h-auto lg:hidden" size="small" }}
+    {{ partial:icons/cross class="w-full h-auto hidden lg:block" }}
+  </span>
+</a>

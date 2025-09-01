@@ -1,0 +1,51 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: textarea
+              display: Titel
+              localizable: true
+          -
+            handle: address
+            field:
+              type: textarea
+              display: Adresse
+              localizable: true
+          -
+            handle: google_maps_url
+            field:
+              type: text
+              display: 'Google Maps URL'
+              localizable: true
+          -
+            handle: email
+            field:
+              input_type: email
+              type: text
+              display: E-Mail
+              localizable: true
+          -
+            handle: phone
+            field:
+              type: text
+              display: Telefon
+              localizable: true
+          -
+            handle: newsletter
+            field:
+              buttons:
+                - removeformat
+                - anchor
+              toolbar_mode: floating
+              remove_empty_nodes: true
+              link_collections:
+                - pages
+              container: assets
+              type: bard
+              display: Newsletter
+              localizable: true

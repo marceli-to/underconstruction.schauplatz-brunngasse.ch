@@ -1,0 +1,68 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              localizable: true
+              validate:
+                - required
+          -
+            handle: description
+            field:
+              type: textarea
+              display: Beschreibung
+              localizable: true
+          -
+            handle: link
+            field:
+              collections:
+                - pages
+              container: assets
+              type: link
+              display: Link
+              localizable: true
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: tags
+            field:
+              type: terms
+              taxonomies:
+                - tags
+              display: Tags
+              mode: select
+              localizable: true
+              max_items: 1
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - press_reviews
+              max_items: 1
+              listable: false
+              localizable: true
+  settings:
+    display: Einstellungen
+    sections:
+      -
+        display: Einstellungen
+        fields:
+          -
+            import: search_index
+title: Pressespiegel

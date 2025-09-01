@@ -1,0 +1,205 @@
+
+{{ partial:layout/inner }}
+
+  <form 
+    action="/{{ "suche" | trans }}"
+    class="mb-30 lg:mb-65">
+    <input 
+      type="text" 
+      name="q" 
+      value="{{ get:q }}"
+      placeholder="{{ "Suchbegriff" | trans }}..."
+      class="block w-full !ring-0 focus:!ring-0 !outline-none pb-6 lg:pt-6 lg:pb-10 border-y-6 lg:border-y-9 border-sunella font-feixen-sans-medium text-2xl lg:text-3xl !leading-[1.2] placeholder:text-graisel placeholder:text-lg placeholder:lg:text-3xl">
+  </form>
+
+  {{ if get:q }}
+
+    {{ has_default_results = true }}
+    {{ has_publications_results = true }}
+    {{ has_press_reviews_results = true }}
+
+    {{ search:results index="default" limit="1" phrase="{get:q}" }}
+      {{ if no_results }}
+        {{ has_default_results = false }}
+      {{ /if }}
+    {{ /search:results }}
+
+    {{ search:results index="publications" limit="1" phrase="{get:q}" }}
+      {{ if no_results }}
+        {{ has_publications_results = false }}
+      {{ /if }}
+    {{ /search:results }}
+
+    {{ search:results index="press_reviews" limit="1" phrase="{get:q}" }}
+      {{ if no_results }}
+        {{ has_press_reviews_results = false }}
+      {{ /if }}
+    {{ /search:results }}
+
+
+    {{ if !has_default_results && !has_publications_results && !has_press_reviews_results }}
+      <p>Kein Eintrag</p>
+    {{ /if }}
+     
+
+    {{ search:results index="default" phrase="{get:q}" }}
+      {{ if !no_results }}
+        {{ accordion_match = false }}
+          {{ accordion_title = "" }}
+          {{ accordion_anchor = "" }}
+          {{ if accordion_anchors }}
+            {{ accordion_anchors }}
+              {{ if content | contains:{get:q} }}
+                {{ accordion_match = true }}
+                {{ accordion_title = title }}
+                {{ accordion_anchor = anchor }}
+              {{ /if }}
+            {{ /accordion_anchors }}
+          {{ /if }}
+          
+          {{ if accordion_match }}
+
+            {{ partial:layout/article class="pt-4 pb-12 lg:pt-6 lg:pb-20 border-t-6 lg:border-t-9 border-blushra last:border-b-6 lg:last:border-b-9 last:border-blushra" }}
+
+              <a 
+                href="{{ entry_url }}#{{ accordion_anchor }}"
+                class="!no-underline flex flex-col gap-y-3 lg:gap-y-6">
+
+                {{ partial:components/headings/h2 }}
+                  {{ searchable_content | highlight:{get:q} }}
+                {{ /partial:components/headings/h2 }}
+
+                <div class="underline underline-offset-2 decoration-2">
+                  {{ title }} &rarr; {{ accordion_title }}
+                </div>
+
+              </a>
+              
+            {{ /partial:layout/article }}
+
+          {{ else }}
+
+            {{ partial:layout/article class="pt-4 pb-12 lg:pt-6 lg:pb-20 border-t-6 lg:border-t-9 border-blushra last:border-b-6 lg:last:border-b-9 last:border-blushra" }}
+
+              {{ if collection.handle == 'agenda' }}
+                {{ if agenda_date < now }}
+                  <a 
+                    href="/{{ "agenda" | translated_slug:{site:short_locale} }}#item-{{ "Vergangene Veranstaltungen" | trans | slugify }}"
+                    class="!no-underline flex flex-col gap-y-3 lg:gap-y-6">
+
+                    {{ partial:components/headings/h2 }}
+                      {{ title }}
+                    {{ /partial:components/headings/h2 }}
+
+                    <div class="underline underline-offset-2 decoration-2">
+                      {{ "Agenda &rarr; Vergangene Veranstaltungen" | trans }}
+                    </div>
+
+                  </a>
+                {{ else }}
+                  <a 
+                    href="/{{ "agenda" | translated_slug:{site:short_locale} }}"
+                    class="!no-underline flex flex-col gap-y-3 lg:gap-y-6">
+
+                    {{ partial:components/headings/h2 }}
+                      {{ title }}
+                    {{ /partial:components/headings/h2 }}
+
+                    <div class="underline underline-offset-2 decoration-2">
+                      {{ "Agenda" | trans }}
+                    </div>
+
+                  </a>
+                {{ /if }}
+              {{ else }}
+                <a 
+                  href="{{ url }}"
+                  class="!no-underline flex flex-col gap-y-3 lg:gap-y-6">
+
+                  {{ partial:components/headings/h2 }}
+                    {{ searchable_content | highlight:{get:q} }}
+                  {{ /partial:components/headings/h2 }}
+
+                  <div class="underline underline-offset-2 decoration-2">
+                    {{ title }}
+                  </div>
+
+                </a>
+              {{ /if }}
+
+            {{ /partial:layout/article }}
+
+          {{ /if }}
+
+      {{ /if }}
+
+    {{ /search:results }}
+
+    {{ search:results index="publications" phrase="{get:q}" }}
+
+      {{ if !no_results }}
+
+        {{ partial:layout/article class="pt-4 pb-12 lg:pt-6 lg:pb-20 border-t-6 lg:border-t-9 border-blushra last:border-b-6 lg:last:border-b-9 last:border-blushra" }}
+
+          <a 
+            href="/{{ "diskurs" | translated_slug:{site:short_locale} }}#{{ "diskurs" | accordion_for_content_type:'publications':{site:short_locale} }}" 
+            class="!no-underline flex flex-col gap-y-3 lg:gap-y-6">
+
+            {{ if tags }}
+              <div class="text-md lg:text-lg">
+                {{ tags }}{{ title }}{{ /tags }}
+              </div>
+            {{ /if }}
+
+            {{ partial:components/headings/h2 }}
+              {{ title }}
+            {{ /partial:components/headings/h2 }}
+
+            <div class="underline underline-offset-2 decoration-2">
+              {{ "Diskurs &rarr; Publikationen" | trans }} &rarr; {{ tags }} {{ title }} {{ /tags }}
+            </div>
+
+          </a>
+
+        {{ /partial:layout/article }}
+
+      {{ /if }}
+
+    {{ /search:results }}
+
+    {{ search:results index="press_reviews" phrase="{get:q}" }}
+
+      {{ if !no_results }}
+
+        {{ partial:layout/article class="pt-4 pb-12 lg:pt-6 lg:pb-20 border-t-6 lg:border-t-9 border-blushra last:border-b-6 lg:last:border-b-9 last:border-blushra" }}
+
+          <a 
+            href="/{{ "diskurs" | translated_slug:{site:short_locale} }}#{{ "diskurs" | accordion_for_content_type:'press_reviews':{site:short_locale} }}"
+            class="!no-underline flex flex-col gap-y-3 lg:gap-y-6">
+            
+            {{ if tags }}
+              <div class="text-md lg:text-lg">
+                {{ tags }}{{ title }}{{ /tags }}
+              </div>
+            {{ /if }}
+
+            {{ partial:components/headings/h2 }}
+              {{ title }}
+            {{ /partial:components/headings/h2 }}
+
+            <div class="underline underline-offset-2 decoration-2">
+              {{ "Diskurs &rarr; Pressespiegel" | trans }} &rarr; {{ tags }} {{ title }} {{ /tags }}
+            </div>
+
+          </a>
+
+        {{ /partial:layout/article }}
+        
+      {{ /if }}
+
+    {{ /search:results }}
+
+
+  {{ /if }}
+   
+{{ /partial:layout/inner }}

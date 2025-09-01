@@ -1,0 +1,30 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: address
+            field:
+              buttons:
+                - bold
+                - removeformat
+                - anchor
+              toolbar_mode: floating
+              remove_empty_nodes: true
+              type: bard
+              display: Adresse
+              localizable: true
+          -
+            handle: opening_hours
+            field:
+              buttons:
+                - bold
+                - removeformat
+                - anchor
+              toolbar_mode: floating
+              remove_empty_nodes: true
+              type: bard
+              display: Öffnungszeiten
+              localizable: true

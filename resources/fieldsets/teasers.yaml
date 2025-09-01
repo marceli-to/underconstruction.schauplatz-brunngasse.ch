@@ -1,0 +1,124 @@
+title: Teaser
+fields:
+  -
+    handle: teasers
+    field:
+      type: replicator
+      display: Teasers
+      localizable: false
+      collapse: true
+      sets:
+        teasers:
+          display: Teasers
+          instructions: 'Teaser hinzufügen'
+          icon: addon-boxes-stack
+          sets:
+            teaser_agenda:
+              display: Agenda
+              instructions: 'Teaser Agenda hinzufügen'
+              icon: text-formatting-image-bottom
+              fields:
+                -
+                  handle: event
+                  field:
+                    max_items: 1
+                    collections:
+                      - agenda
+                    type: entries
+                    display: Veranstaltung
+                    localizable: false
+            teaser_publication:
+              display: Publikation
+              instructions: 'Teaser Publikation hinzufügen'
+              icon: text-formatting-image-bottom
+              fields:
+                -
+                  handle: publication
+                  field:
+                    max_items: 1
+                    collections:
+                      - publications
+                    type: entries
+                    display: Publikation
+                    localizable: false
+            teaser_manual:
+              display: Manuell
+              instructions: 'Manueller Teaser hinzufügen'
+              icon: text-formatting-image-bottom
+              fields:
+                -
+                  handle: tag
+                  field:
+                    max_items: 1
+                    taxonomies:
+                      - tags
+                    type: terms
+                    display: Tag
+                    localizable: false
+                -
+                  handle: title
+                  field:
+                    type: text
+                    display: Titel
+                    localizable: false
+                -
+                  handle: image
+                  field:
+                    max_files: 1
+                    container: assets
+                    type: assets
+                    display: Bild
+                    localizable: false
+                -
+                  handle: editor
+                  field:
+                    buttons:
+                      - bold
+                      - removeformat
+                      - anchor
+                    remove_empty_nodes: false
+                    link_collections:
+                      - pages
+                    container: assets
+                    type: bard
+                    display: Editor
+                    localizable: false
+                    sets:
+                      editor_elements:
+                        display: Elemente
+                        icon: addon-boxes-stack
+                        sets:
+                          link:
+                            display: Weblink
+                            instructions: 'Webseite/Datei verlinken'
+                            icon: link
+                            fields:
+                              -
+                                handle: link
+                                field:
+                                  collections:
+                                    - pages
+                                  container: assets
+                                  type: link
+                                  display: Link
+                                  localizable: false
+                              -
+                                handle: link_text
+                                field:
+                                  type: text
+                                  display: Linktext
+                                  localizable: false
+                              -
+                                handle: target
+                                field:
+                                  options:
+                                    -
+                                      key: _self
+                                      value: 'Gleiches Fenster'
+                                    -
+                                      key: _blank
+                                      value: 'Neues Fenster'
+                                  default: _self
+                                  type: select
+                                  display: 'Öffnen in'
+                                  localizable: false

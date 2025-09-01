@@ -1,0 +1,68 @@
+{{ partial:layout/article 
+  class="mb-30 lg:mb-55 last:mb-0 pt-13 lg:pt-17 border-t-6 lg:border-t-9 border-{{ borderColor }}" }}
+  <div 
+    id="{{ slug }}" 
+    x-data="{ showContent: false }"
+    class="scroll-mt-20 lg:scroll-mt-25">
+
+    <div class="mb-3 lg:mb-5">
+      <span>{{ if site:short_locale == "de" }}{{ agenda_date iso_format="dddd, D. MMMM YYYY" }}{{ else }}{{ agenda_date iso_format="dddd, Do MMMM YYYY" }}{{ /if }}</span>{{ if agenda_time }}, {{ if site:short_locale == "de" }}{{ agenda_time iso_format="H.mm" }}&nbsp;Uhr{{ else }}{{ agenda_time iso_format="h.mma" }}{{ /if }}{{ /if }}
+    </div>
+
+    {{ partial:components/headings/h2 class="mb-5 lg:mb-8" }}
+      {{ title }}
+    {{ /partial:components/headings/h2 }}
+
+    {{ if summary }}
+      <div>
+        {{ summary | nl2br }}
+      </div>
+    {{ /if }}
+
+    {{ if image }}
+      <div class="max-w-media-container-narrow mx-auto {{ isArchive ? 'mt-10 lg:mt-20' : 'mt-20 lg:mt-35' }}">
+        {{ partial:components/media/image 
+            :image="image" 
+            eager="true" 
+            wrapperClass="bg-silvara px-40 lg:px-70 py-30 lg:py-40 aspect-[4/3]" 
+            class="w-full h-full object-contain"
+            hasCaption="false" }}
+        {{ partial:components/media/caption class="!mt-4 lg:!mt-8" }}
+          {{ image:alt }}
+        {{ /partial:components/media/caption }}
+      </div>
+    {{ /if }}
+
+    {{ if editor }}
+
+        <button 
+          @click="showContent = !showContent"
+          class="block {{ isArchive ? 'size-15 lg:size-30' : 'size-25 lg:size-40' }} mt-10 lg:mt-15">
+          <span x-show="!showContent">
+            {{ partial:icons/plus class="w-full h-auto"}}
+          </span>
+          <span x-show="showContent">
+            {{ partial:icons/minus class="w-full h-auto"}}
+          </span>
+        </button>
+
+        <div 
+          x-show="showContent" 
+          x-cloak
+          class="mt-10 lg:mt-15">
+          {{ editor }}
+            {{ if type == 'text' }}
+              {{ text }}
+            {{ /if }}
+            {{ if type == 'link' }}
+              {{ partial:components/links/link }}
+            {{ /if }}
+            {{ if type == 'link_mail' }}
+              {{ partial:components/links/link_mail }}
+            {{ /if }}
+          {{ /editor }}
+        </div>
+
+      {{ /if }}
+  </div>
+{{ /partial:layout/article }}

@@ -1,0 +1,78 @@
+<div class="masonry-item">
+  <div class="pt-4 lg:pt-8 border-t-6 lg:border-t-9 {{ border_class ?? 'border-blushra' }}">
+    {{ if teaserType == 'agenda' }}
+      {{ "Agenda" | trans }}
+    {{ else }}
+      {{ if tag }}
+        <div>
+          {{ tag:title }}
+        </div>
+      {{ else }}
+        {{ if tags }}
+          <div>
+            {{ tags }}
+              {{ title }}
+            {{ /tags }}
+          </div>
+        {{ /if }}
+      {{ /if }}
+    {{ /if }}
+
+    {{ partial:components/headings/h2 class="{{ !manual ? 'lg:mt-5' : ''}}" }}
+      {{ title }}
+    {{ /partial:components/headings/h2 }}
+
+    {{ if image }}
+      <div class="mt-8 lg:mt-12">
+        {{ partial:components/media/image 
+          :image="image" 
+          eager="true"
+          wrapperClass="bg-silvara px-40 lg:px-70 py-30 lg:py-40 aspect-[4/3]" 
+          class="w-full h-full object-contain"
+          hasCaption="false" }}
+      </div>
+    {{ /if }}
+    {{ if description }}
+      <div class="mt-12 lg:mt-18">
+        {{ description }}
+          {{ if type == 'text' }}
+            {{ text }}
+          {{ /if }}
+          {{ if type == 'link' }}
+            {{ partial:components/links/link }}
+          {{ /if }}
+        {{ /description }}
+
+        {{ if teaserType == 'agenda' }}
+          <div>
+            {{ partial:components/links/link 
+              link="{{ site:short_locale == "de" ? '/agenda' : '/en/agenda' }}/#{{ slug }}" 
+              link_text="{{ "Weiterlesen" | trans }}" 
+              target="_self" }}
+          </div>
+        {{ /if }}
+        
+        {{ if teaserType == 'publication' }}
+          <div>
+            {{ partial:components/links/link 
+              link="{{ site:short_locale == "de" ? '/diskurs/#item-publikationen-und-vortraege' : '/en/discourse/#publications-and-presentations' }}" 
+              link_text="{{ "Weiterlesen" | trans }}" 
+              target="_self" }}
+          </div>
+        {{ /if }}
+
+      </div>
+    {{ else if editor }}
+      <div class="mt-12 lg:mt-18">
+        {{ editor }}
+          {{ if type == 'text' }}
+            {{ text }}
+          {{ /if }}
+          {{ if type == 'link' }}
+            {{ partial:components/links/link }}
+          {{ /if }}
+        {{ /editor }}
+      </div>
+    {{ /if }}
+  </div> 
+</div>

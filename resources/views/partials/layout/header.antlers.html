@@ -1,0 +1,28 @@
+<header 
+  x-data="headerScroll()"
+  :class="{ 'translate-y-[-100%]': !headerVisible, 'translate-y-0': headerVisible }"
+  class="bg-white pt-16 lg:pt-30 pb-7 lg:pb-12 h-[var(--header-height-sm)] lg:h-[var(--header-height-lg)] fixed z-30 top-0 w-full flex items-center transition-transform duration-500 ease-in-out">
+  {{ partial:layout/outer class="flex justify-between px-15 lg:px-30" }}
+    <a href="/{{ site:short_locale == 'de' ? '' : 'en' }}" title="{{ "Zurück zur Startseite" | trans }}">
+      {{ partial:icons/logo class="w-194 lg:w-250 h-auto" }}
+    </a>
+    <div 
+      class="flex items-center"
+      x-data="menuToggle()">
+      
+      <div class="hidden lg:block lg:mr-30">
+        {{ partial:menu/search/button }}
+      </div>
+
+      <div class="hidden lg:block lg:mr-60">
+        {{ partial:menu/language/wrapper }}
+      </div>
+
+      <div>
+        {{ partial:menu/main/button }}
+      </div>
+
+      {{ partial:menu/main/wrapper }}
+    </div>
+  {{ /partial:layout/outer }}
+</header>

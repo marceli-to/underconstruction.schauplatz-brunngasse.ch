@@ -1,0 +1,42 @@
+<a 
+  href="{{ glide:image preset="lightbox" }}" 
+  class="relative"
+  data-fancybox="{{ fancybox ? fancybox : 'gallery' }}" 
+  data-bg-color="bg-{{ lightbox_background }}"
+  {{ if site:short_locale == "de" }}
+    data-caption="{{ image:alt_de }}"
+  {{ elseif site:short_locale == "en" }}
+    data-caption="{{ image:alt_en }}"
+  {{ /if }}
+  >
+
+  <figure class="{{ wrapperClass }}">
+    <picture>
+      {{ if (sizes | in_array('2xl')) }}
+        <source media="(min-width: 1280px)" srcset="{{ glide:image preset="{{ preset ? '2xl-{{ preset }}-webp' : '2xl-webp' }}" }}" type="image/webp">
+        <source media="(min-width: 1280px)" srcset="{{ glide:image preset="{{ preset ? '2xl-{{ preset }}' : '2xl' }}" }}" type="image/jpeg">
+      {{ /if }}
+      {{ if (sizes | in_array('xl')) }}
+        <source media="(min-width: 1024px)" srcset="{{ glide:image preset="{{ preset ? 'xl-{{ preset }}-webp' : 'xl-webp' }}" }}" type="image/webp">
+        <source media="(min-width: 1024px)" srcset="{{ glide:image preset="{{ preset ? 'xl-{{ preset }}' : 'xl' }}" }}" type="image/jpeg">
+      {{ /if }}
+      {{ if (sizes | in_array('lg')) }}
+        <source media="(min-width: 768px)" srcset="{{ glide:image preset="{{ preset ? 'lg-{{ preset }}-webp' : 'lg-webp' }}" }}" type="image/webp">
+        <source media="(min-width: 768px)" srcset="{{ glide:image preset="{{ preset ? 'lg-{{ preset }}' : 'lg' }}" }}" type="image/jpeg">
+      {{ /if }}
+      <source srcset="{{ glide:image preset="{{ preset ? 'md-{{ preset }}-webp' : 'md-webp' }}" }}" />
+      <img 
+        src="{{ glide:image preset="{{ preset ? 'md-{{ preset }}' : 'md' }}" }}" 
+        {{ if site:short_locale == "de" }}
+          alt="{{ image:alt_de }}"
+        {{ elseif site:short_locale == "en" }}
+          alt="{{ image:alt_en }}"
+        {{ /if }}
+        height="{{ image:height }}" 
+        width="{{ image:width }}"
+        class="block {{ class ?? '' }}"
+        loading="{{ eager ? 'eager' : 'lazy' }}">
+    </picture>
+  </figure>
+  {{ partial:icons/lightbox class="block absolute top-8 md:top-auto md:bottom-8 lg:bottom-16 left-8 lg:left-16 w-30 lg:w-60 h-auto z-10" }}
+</a>

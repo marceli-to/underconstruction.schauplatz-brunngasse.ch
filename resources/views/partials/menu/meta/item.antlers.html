@@ -1,0 +1,12 @@
+<li>
+  <a 
+    href="{{ url }}"
+    aria-label="{{ title }}"
+    target="{{ is_external ? '_blank' : '_self' }}"
+    class="relative text-xl lg:text-lg font-feixen-sans-medium flex items-center group">
+    <span class="block absolute left-0 top-1/2 -translate-y-1/2 size-18 lg:size-15 bg-black rounded-full opacity-0 group-hover:opacity-100 gtransition-opacity duration-200 group-hover:duration-500 group-hover:delay-100 {{ is_current || is_parent ? 'opacity-100' : '' }}"></span>
+    <span class="translate-x-0 group-hover:translate-x-30 group-hover:lg:translate-x-25 transition-transform duration-300 {{ is_current || is_parent ? 'translate-x-30 lg:translate-x-25' : '' }}">
+      {{ title }}
+    </span>
+  </a>
+</li>

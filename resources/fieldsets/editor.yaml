@@ -1,0 +1,112 @@
+title: Editor
+fields:
+  -
+    import: border
+    prefix: content_
+  -
+    handle: editor
+    field:
+      buttons:
+        - h2
+        - h3
+        - h4
+        - bold
+        - italic
+        - unorderedlist
+        - removeformat
+        - superscript
+        - anchor
+        - nobr
+        - lead
+      toolbar_mode: floating
+      remove_empty_nodes: true
+      type: bard
+      display: Text
+      container: assets
+      localizable: true
+      collapse: true
+      sets:
+        editor_elements:
+          display: Elemente
+          icon: addon-boxes-stack
+          sets:
+            link:
+              display: Weblink
+              instructions: 'Webseite verlinken'
+              icon: link
+              fields:
+                -
+                  handle: link
+                  field:
+                    collections:
+                      - pages
+                    container: assets
+                    type: link
+                    display: Link
+                    localizable: false
+                    validate:
+                      - required
+                -
+                  handle: link_text
+                  field:
+                    type: text
+                    display: Linktext
+                    localizable: false
+                    validate:
+                      - required
+                -
+                  handle: target
+                  field:
+                    options:
+                      -
+                        key: _self
+                        value: 'Gleiches Fenster'
+                      -
+                        key: _blank
+                        value: 'Neues Fenster'
+                    default: _self
+                    type: select
+                    display: 'Öffnen in'
+                    localizable: false
+            link_mail:
+              display: Maillink
+              instructions: 'E-Mail verlinken'
+              icon: link
+              fields:
+                -
+                  handle: email
+                  field:
+                    type: text
+                    display: E-Mail
+                    localizable: false
+                    validate:
+                      - required
+                -
+                  handle: link_text
+                  field:
+                    type: text
+                    display: Linktext
+                    localizable: false
+                    validate:
+                      - required
+            link_phone:
+              display: Telefonlink
+              instructions: 'Telefon verlinken'
+              icon: link
+              fields:
+                -
+                  handle: phone
+                  field:
+                    type: text
+                    display: Telefon
+                    localizable: false
+                    validate:
+                      - required
+                -
+                  handle: link_text
+                  field:
+                    type: text
+                    display: Linktext
+                    localizable: false
+                    validate:
+                      - required

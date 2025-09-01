@@ -1,0 +1,152 @@
+title: Page
+tabs:
+  main:
+    display: Content
+    sections:
+      -
+        display: Content
+        fields:
+          -
+            handle: page_title_section
+            field:
+              type: section
+              display: Seitentitel
+              localizable: false
+          -
+            import: page_title
+            config:
+              title:
+                required: true
+          -
+            handle: page_content_section
+            field:
+              type: section
+              display: Inhalte
+              localizable: false
+          -
+            handle: page_elements
+            field:
+              type: replicator
+              display: Inhaltselemente
+              localizable: true
+              collapse: true
+              sets:
+                main_elements:
+                  display: Hauptelemente
+                  icon: addon-boxes-stack
+                  sets:
+                    page_title:
+                      display: Seitentitel
+                      instructions: 'Seitentitel hinzufügen'
+                      icon: text-formatting-all-caps
+                      fields:
+                        -
+                          import: page_title
+                    editor:
+                      display: Texteditor
+                      instructions: 'Texteditor hinzufügen'
+                      icon: text-formatting-markdown
+                      fields:
+                        -
+                          import: editor
+                    accordion:
+                      display: Akkordeon
+                      instructions: 'Akkordeon hinzufügen'
+                      icon: form-drop-down-menu
+                      fields:
+                        -
+                          import: accordion
+                    single_image:
+                      display: Einzelbild
+                      instructions: 'Einzelbild hinzufügen'
+                      icon: media-image-picture-orientation
+                      fields:
+                        -
+                          import: single_image
+                    image_gallery:
+                      display: Bildergalerie
+                      instructions: 'Bildergalerie hinzufügen'
+                      icon: media-image-picture-gallery
+                      fields:
+                        -
+                          import: image_gallery
+                        -
+                          handle: show_latest_event
+                          field:
+                            type: toggle
+                            display: 'Aktuelle Veranstaltung anzeigen?'
+                            localizable: false
+                    agenda:
+                      display: Agenda
+                      instructions: 'Agenda hinzufügen'
+                      icon: dashboard-layout
+                      fields: {  }
+                    teasers:
+                      display: Teaser
+                      instructions: 'Teaser für Startseite hinzufügen'
+                      icon: layout-grid-dots
+                      fields:
+                        -
+                          import: teasers
+                special_elements:
+                  display: Spezialelemente
+                  icon: addon-boxes-stack
+                  sets:
+                    contact_information:
+                      display: Kontaktinformationen
+                      instructions: 'Kontaktinformationen hinzufügen'
+                      icon: text-formatting-initial-letter
+                      fields:
+                        -
+                          import: contact_information
+                    search:
+                      display: Suche
+                      instructions: 'Suchformular und Suchresultate'
+                      icon: search-magnifying-glass
+                      fields: {  }
+                    latest_event:
+                      display: 'Aktuelle Veranstaltung'
+                      instructions: 'Aktuelle Veranstaltung anzeigen'
+                      icon: mail-chat-bubble-text
+                      fields:
+                        -
+                          import: latest_event
+  seo:
+    display: SEO
+    sections:
+      -
+        display: SEO
+        fields:
+          -
+            import: seo
+  settings:
+    display: Settings
+    sections:
+      -
+        display: Settings
+        fields:
+          -
+            import: settings
+          -
+            import: search_index
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+              show_regenerate: true
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - pages
+              max_items: 1
+              listable: false
+              localizable: true

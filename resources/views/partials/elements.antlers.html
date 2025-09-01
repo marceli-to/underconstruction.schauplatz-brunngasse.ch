@@ -1,0 +1,78 @@
+{{ if type == 'teasers' }}
+  {{ partial:components/teaser/wrapper }}
+{{ /if }}
+
+{{ if type == 'page_title' }}
+{{ partial:components/misc/page_title }}
+{{ /if }}
+
+{{ if type == 'editor' }}
+  {{ partial:layout/inner }}
+    {{ partial:components/editor }}
+  {{ /partial:layout/inner }}
+{{ /if }}
+
+{{ if type == 'contact_information' }}
+  {{ partial:components/misc/contact }}
+{{ /if }}
+
+{{ if type == 'accordion' }}
+  {{ partial:layout/inner }}
+
+    {{ partial:components/accordion/wrapper }}
+
+      {{ accordion_elements }}
+    
+        {{ partial:components/accordion/item index="{{ index }}" title="{{ accordion_title }}" }}
+
+          {{ accordion_element_contents }}
+
+            {{ if type == 'editor' }}
+              {{ partial:components/editor }}
+            {{ /if }}
+
+            {{ if type == 'single_image' }}
+              <div class="mt-30 lg:mt-60">
+                {{ partial:components/media/preview :sizes="['2xl', 'xl', 'lg']" showCaption="true" }}
+              </div>
+            {{ /if }}
+
+            {{ if type == 'spacer' }}
+              <div class="mb-40 lg:mb-80 h-0">&nbsp;</div>
+            {{ /if }}
+
+            {{ if type == 'press_reviews' }}
+              {{ partial:press_reviews/list }}
+            {{ /if }}
+
+            {{ if type == 'publications' }}
+              {{ partial:publications/list }}
+            {{ /if }}
+
+          {{ /accordion_element_contents }}
+
+        {{ /partial:components/accordion/item }}
+
+      {{ /accordion_elements }}
+
+    {{ /partial:components/accordion/wrapper }}
+
+  {{ /partial:layout/inner }}
+{{ /if }}
+
+{{ if type == 'single_image' }}
+  {{ partial:components/media/container }}
+    {{ partial:components/media/preview :sizes="['2xl', 'xl', 'lg']" showCaption="true" }}
+  {{ /partial:components/media/container }}
+{{ /if }}
+
+{{ if type == 'image_gallery' }}
+  {{ partial:components/media/gallery/wrapper }}
+  {{ partial:agenda/latest }}
+{{ /if }}
+
+{{ if type == 'agenda' }}
+  {{ partial:layout/inner }}
+    {{ partial:agenda/wrapper }}
+  {{ /partial:layout/inner }}
+{{ /if }}

@@ -1,0 +1,28 @@
+title: SEO
+fields:
+  -
+    handle: open_graph_title
+    field:
+      type: text
+      display: Title
+      instructions: 'Can be used as a replacement for the page title'
+      localizable: true
+      instructions_position: below
+  -
+    handle: open_graph_description
+    field:
+      type: textarea
+      display: Description
+      instructions: 'One or two descriptive sentences about the content of the page.'
+      localizable: true
+      instructions_position: below
+  -
+    handle: open_graph_image
+    field:
+      max_files: 1
+      container: assets
+      type: assets
+      display: Image
+      instructions: 'Open Graph Image used for sharing on social media.'
+      localizable: true
+      instructions_position: below

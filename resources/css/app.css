@@ -1,0 +1,191 @@
+@import "typo/webfonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] { 
+  @apply !hidden;
+}
+
+:root {
+  --header-height-sm: 4.5rem;  /* 72 px */
+  --header-height-lg: 6.5rem;  /* 104 px */
+}
+
+main {
+  @apply flex-1;
+}
+
+p:not(:last-child) {
+  @apply mb-20 lg:mb-30;
+}
+
+article ul {
+  @apply m-0 p-0 mb-20 lg:mb-30 ml-20 flex flex-col gap-y-5 lg:gap-y-10;
+}
+
+article li {
+  @apply list-disc list-item;
+}
+
+strong {
+  @apply font-feixen-sans-semibold font-normal;
+}
+
+sup {
+  @apply text-[60%] -top-[.60em]
+}
+
+h1 {}
+
+h2 {}
+
+h3 {
+  @apply font-feixen-sans-medium text-lg lg:text-2xl;
+}
+
+h4 {
+  @apply font-feixen-sans-medium;
+}
+
+/* Masonry layout styles 
+*************************/
+
+#teaser-masonry-container,
+#publication-masonry-container {
+  @apply relative;
+}
+
+#teaser-masonry-container .masonry-item,
+#publication-masonry-container .masonry-item {
+  @apply absolute top-0 left-0 pb-15 lg:pb-25
+}
+
+/* Spacing between elements
+*****************************/
+
+/* inner-container follows inner-container */
+.max-w-inner-container:not(.is-page-title) + .max-w-inner-container {
+  @apply mt-40 lg:mt-80;
+}
+
+/* media-container follows inner-container */
+.max-w-media-container-wide + .max-w-inner-container {
+  @apply mt-40 lg:mt-80;
+}
+
+/* inner-container follows media-container */
+.max-w-inner-container + .max-w-media-container-wide {
+  @apply mt-40 lg:mt-80;
+}
+
+/* media-container follows article */
+article + .max-w-media-container-narrow {
+  @apply mt-30 lg:mt-60;
+}
+
+/* article follows media-container */
+.max-w-media-container-narrow + article {
+  @apply mt-30 lg:mt-60;
+}
+
+/* Lightbox 
+************/
+
+.fancybox__backdrop {
+  @apply !bg-mystiris
+}
+
+.fancybox__backdrop.bg-mystiris {
+  @apply !bg-mystiris
+}
+
+.fancybox__backdrop.bg-verdique {
+  @apply !bg-verdique
+}
+
+.fancybox__backdrop.bg-sunella {
+  @apply !bg-sunella
+}
+
+.fancybox__backdrop.bg-flareon {
+  @apply !bg-flareon
+}
+
+.fancybox__backdrop.bg-blushra {
+  @apply !bg-blushra
+}
+
+.f-button {
+  @apply !bg-transparent
+}
+
+.fancybox__content {
+  @apply lg:!px-50
+}
+
+.fancybox__footer {
+  @apply !px-15 !bg-transparent;
+}
+
+.fancybox__caption {
+  @apply !text-white !text-xs lg:!text-sm !p-0 !pb-10 lg:!pb-0 !flex !gap-x-10 !mt-0 lg:!mt-14
+}
+
+.fancybox__caption div:first-of-type {
+  @apply !shrink-0;
+}
+
+.fancybox__slide {
+  @apply !flex items-center justify-center;
+}
+
+.fancybox__content {
+  @apply lg:!max-h-[90vh] !h-auto flex items-center justify-center;
+}
+
+.fancybox__content img {
+  @apply w-full h-auto sm:max-h-[90vh] sm:w-auto sm:h-auto sm:object-contain;
+}
+
+.f-button[data-fancybox-close] svg,
+.f-button.is-next svg,
+.f-button.is-prev svg {
+  @apply !hidden
+}
+
+.f-button[data-fancybox-close] {
+  @apply bg-[url('../img/cross.svg')] bg-center bg-no-repeat bg-[length:25px_25px] size-25 top-10 right-10 lg:bg-[length:35px_35px] lg:size-35 lg:top-30 lg:right-30;
+}
+
+.f-button.is-next,
+.f-button.is-prev {
+  @apply bg-center bg-no-repeat bg-[length:15px_30px] w-[15px] h-[30px] lg:bg-[length:25px_50px] lg:w-[25px] lg:h-[40px]
+}
+
+.f-button.is-next {
+  @apply bg-[url('../img/chevron-right.svg')] !right-10 lg:!right-30
+}
+
+.f-button.is-prev {
+  @apply bg-[url('../img/chevron-left.svg')] !left-10 lg:!left-30
+}
+
+/* Page specific styles
+*****************************/
+.page-privacy h2 {
+  @apply font-feixen-sans-medium text-lg lg:text-2xl mb-20 lg:mb-30;
+}
+
+.page-privacy h3 {
+  @apply font-feixen-sans-medium text-md lg:text-lg mb-5 lg:mb-10;
+}
+
+.page-privacy main ul {
+  @apply m-0 p-0 mb-20 lg:mb-30 ml-20 flex flex-col gap-y-5 lg:gap-y-10;
+}
+
+.page-privacy main li {
+  @apply list-disc list-item;
+}

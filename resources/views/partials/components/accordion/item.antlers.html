@@ -1,0 +1,41 @@
+<div 
+  x-data="AccordionItem({{ index }})"
+  x-effect="updateHeight()"
+  id="item-{{ slug }}"
+  class="relative w-full scroll-mt-6 lg:scroll-mt-10 border-b-6 lg:border-b-9 border-{{ accordion_border_bottom_color }}">
+  <button 
+    type="button"
+    class="w-full block text-left hover:bg-white transition-colors duration-300 ease-in-out group"
+    @click="toggle()">
+    
+    <div class="w-full flex items-center justify-start gap-x-15 lg:gap-x-25">
+
+      <span 
+        class="flex items-center justify-center leading-none transition-transform"
+        :class="open ? 'scale-y-[-1]' : ''">
+        {{ partial:icons/chevron-down size="small" class="w-26 lg:w-40 h-auto" }}
+      </span>
+
+      {{ partial:components/headings/h2 class="pt-4 pb-6 lg:pt-8 lg:pb-12 hyphens-auto" }}
+        {{ title }}
+      {{ /partial:components/headings/h2 }}
+  
+    </div>
+  </button>
+
+  <div 
+    x-ref="container"
+    role="region"
+    class="relative bg-transparent overflow-hidden max-h-0 transition-all duration-300 ease-in-out" 
+    :class="{ 'bg-white': open }"
+    style="max-height: 0px;">
+    <div x-ref="content">
+      <div 
+        class="w-full pt-20 lg:pt-35 pb-40 lg:pb-80 transition-opacity duration-300 ease-in-out"
+        :class="{ 'opacity-100': open, 'opacity-0': !open }">
+        {{ slot }}
+      </div>
+    </div>
+  </div>
+
+</div>

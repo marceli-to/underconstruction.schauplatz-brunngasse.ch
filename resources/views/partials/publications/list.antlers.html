@@ -1,0 +1,42 @@
+<div id="publication-masonry-container" class="-mb-40 lg:-mb-80">
+
+  {{ collection:publications locale="de" }}
+  
+    <div class="masonry-item absolute top-0 left-0 border-t-6 lg:border-t-9 border-blushra">
+      
+      {{ if tags }}
+        <div class="mt-4 lg:mt-10">
+          {{ tags }}
+            {{ title }}
+          {{ /tags }}
+        </div>
+      {{ /if }}
+
+      {{ partial:components/headings/h3 class="lg:mt-5" }}
+        {{ title }}
+      {{ /partial:components/headings/h3 }}
+      
+      {{ if image }}
+        <div class="mt-12 lg:mt-18 bg-silvara px-40 py-30 lg:px-70 lg:py-40">
+          {{ partial:components/media/image :image="image" eager="true" }}
+        </div>
+      {{ /if }}
+
+      {{ if description }}
+        <div class="mt-12 lg:mt-18">
+          {{ description }}
+            {{ if type == 'text' }}
+              {{ text }}
+            {{ /if }}
+            {{ if type == 'link' }}
+              {{ partial:components/links/link }}
+            {{ /if }}
+          {{ /description }}
+        </div>
+      {{ /if }}
+
+    </div>
+
+  {{ /collection:publications }}
+
+</div>

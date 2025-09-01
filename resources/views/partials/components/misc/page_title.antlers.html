@@ -1,0 +1,5 @@
+{{ partial:layout/inner class="is-page-title" }}
+  {{ partial:components/headings/h1 class="{{ title_has_border ? 'border-y-transparent border-t-{{ title_border_top_color ?? 'transparent' }} border-b-{{ title_border_bottom_color ?? 'transparent' }}' : '!border-y-0' }}" }}
+    {{ title }}
+  {{ /partial:components/headings/h1 }}
+{{ /partial:layout/inner }}

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="{{ site:short_locale }}" class="scroll-smooth overflow-y-scroll {{ page_class ?? '' }}">
+<head>
+<meta charset="utf-8">
+{{ if is_homepage }}<title>Schauplatz Brunngasse</title>{{ else }}<title>{{ open_graph_title ?? title ?? site:name }} | Schauplatz Brunngasse</title>{{ endif }}
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{ if  open_graph_description }}<meta name="description" content="{{ open_graph_description }}">{{ else }}<meta name="description" content="{{ config.client.meta_description }}">{{ /if}}
+{{ if is_homepage }}<meta property="og:title" content="Schauplatz Brunngasse">{{ else }}<meta property="og:title" content="{{ open_graph_title ?? title ?? site:name }} | Schauplatz Brunngasse">{{ endif }}
+{{ if  open_graph_description }}<meta name="og:description" content="{{ open_graph_description }}">{{ else }}<meta property="og:description" content="{{ config.client.meta_description }}">{{ /if }}
+{{ if open_graph_image }}<meta property="og:image" content="{{ config.client.base_url }}{{ open_graph_image:url }}"> {{ else }}<meta property="og:image" content="{{ config.client.base_url }}/opengraph.jpg">{{ /if }}
+<meta property="og:url" content="{{ current_url }}">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+{{ if  open_graph_description }}<meta name="twitter:description" content="{{ open_graph_description }}">{{ else }}<meta name="twitter:description" content="{{ config.client.meta_description }}">{{ /if }}
+{{ if is_homepage }}<meta name="twitter:title" content="Schauplatz Brunngasse">{{ else }}<meta name="twitter:title" content="{{ open_graph_title ?? title ?? site:name }} | Schauplatz Brunngasse">{{ endif }}
+{{ if open_graph_image }}<meta property="twitter:image" content="{{ config.client.base_url }}{{ open_graph_image }}">{{ else }}<meta property="twitter:image" content="{{ config.client.base_url }}/opengraph.jpg">{{ /if }}
+<meta name="csrf-token" content="{{ csrf_token }}">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="Schauplatz Brunngasse" />
+<link rel="manifest" href="/site.webmanifest" />
+{{ vite src="resources/css/app.css" }}
+</head>

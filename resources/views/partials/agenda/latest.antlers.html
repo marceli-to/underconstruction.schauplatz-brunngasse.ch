@@ -1,0 +1,38 @@
+{{ nocache }}
+{{ collection:agenda as="latest_event" is_latest:is="true" limit="1" }}
+  {{ if latest_event }}
+    {{ latest_event }}
+      <div class="w-[calc(100%_+_30px)] relative mb-30 md:mb-0 text-sm lg:text-md md:absolute md:z-10 md:top-15 lg:top-30 -left-15 md:left-0 lg:-left-30 p-15 md:px-15 lg:px-20 py-15 lg:py-20 bg-verdique text-white md:max-w-sm lg:max-w-md flex flex-col gap-y-8 lg:gap-y-12">
+
+        <div>
+          <div class="mb-2 lg:mb-4">
+            {{ "Aktuell" | trans }}
+          </div>
+          {{ partial:components/headings/h2 }}
+            {{ title }}
+          {{ /partial:components/headings/h2 }}
+        </div>
+        <div>
+          <span>{{ if site:short_locale == "de" }}{{ agenda_date iso_format="dddd, D. MMMM YYYY" }}{{ else }}{{ agenda_date iso_format="dddd, D. MMMM YYYY" }}{{ /if }}</span>{{ if agenda_time }}, {{ if site:short_locale == "de" }}{{ agenda_time iso_format="H.mm" }}&nbsp;Uhr{{ else }}{{ agenda_time iso_format="h.mma" }}{{ /if }}{{ /if }}
+        </div>
+
+        <div class="[&_p]:!mb-0">
+          {{ if summary }}
+            {{ summary }}
+          {{ /if }}
+        </div>
+        <div>
+          <a href="{{ site:short_locale == "de" ? '/agenda' : '/en/agenda' }}/#{{ slug }}" class="group">
+            &rarr;
+            <span class="underline underline-offset-2 decoration-2 group-hover:no-underline">
+              {{ "Agenda" | trans }}
+            </span>
+          </a>
+        </div>
+
+      </div>
+    {{ /latest_event }}
+  {{ else }}
+  {{ /if }}
+{{ /collection:agenda }}
+{{ /nocache }}

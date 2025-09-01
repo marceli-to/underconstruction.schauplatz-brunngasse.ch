@@ -1,0 +1,14 @@
+<nav class="font-feixen-sans-medium font-medium text-xl lg:text-lg leading-none {{ class }}">
+  <ul class="flex space-x-15">
+    {{ locales current_first="false" }}
+      <li>
+        <a 
+          href="{{ permalink }}" 
+          title="{{ locale:locale }}"
+          class="capitalize underline-offset-6 decoration-3 hover:underline {{ site:short_locale == locale:locale ? 'underline' : '' }}">
+          {{ locale:locale | substr:0:2 }}
+        </a>
+      </li>
+    {{ /locales }}
+  </ul>
+</nav>

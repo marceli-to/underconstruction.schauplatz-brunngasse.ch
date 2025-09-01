@@ -1,0 +1,55 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-2aef5ea1.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/css/fonts/StudioFeixenSans-Medium.woff": {
+    "file": "assets/StudioFeixenSans-Medium-9eb0b144.woff",
+    "src": "resources/css/fonts/StudioFeixenSans-Medium.woff"
+  },
+  "resources/css/fonts/StudioFeixenSans-Medium.woff2": {
+    "file": "assets/StudioFeixenSans-Medium-15fc8f9d.woff2",
+    "src": "resources/css/fonts/StudioFeixenSans-Medium.woff2"
+  },
+  "resources/css/fonts/StudioFeixenSans-Regular.woff": {
+    "file": "assets/StudioFeixenSans-Regular-b6339760.woff",
+    "src": "resources/css/fonts/StudioFeixenSans-Regular.woff"
+  },
+  "resources/css/fonts/StudioFeixenSans-Regular.woff2": {
+    "file": "assets/StudioFeixenSans-Regular-f656fcad.woff2",
+    "src": "resources/css/fonts/StudioFeixenSans-Regular.woff2"
+  },
+  "resources/css/fonts/StudioFeixenSans-Semibold.woff": {
+    "file": "assets/StudioFeixenSans-Semibold-d5f98fa7.woff",
+    "src": "resources/css/fonts/StudioFeixenSans-Semibold.woff"
+  },
+  "resources/css/fonts/StudioFeixenSans-Semibold.woff2": {
+    "file": "assets/StudioFeixenSans-Semibold-81386a8a.woff2",
+    "src": "resources/css/fonts/StudioFeixenSans-Semibold.woff2"
+  },
+  "resources/img/chevron-left.svg": {
+    "file": "assets/chevron-left-2d9e263f.svg",
+    "src": "resources/img/chevron-left.svg"
+  },
+  "resources/img/chevron-right.svg": {
+    "file": "assets/chevron-right-daa46e29.svg",
+    "src": "resources/img/chevron-right.svg"
+  },
+  "resources/img/cross.svg": {
+    "file": "assets/cross-bef9d1b7.svg",
+    "src": "resources/img/cross.svg"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app-c30d931d.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.js": {
+    "css": [
+      "assets/app-c30d931d.css"
+    ],
+    "file": "assets/app-4b55514c.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  }
+}

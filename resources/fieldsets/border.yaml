@@ -1,0 +1,62 @@
+title: Rahmen
+fields:
+  -
+    handle: has_border
+    field:
+      type: toggle
+      display: 'Rahmen?'
+      localizable: false
+  -
+    handle: border_top_color
+    field:
+      options:
+        -
+          key: mystiris
+          value: Violett
+        -
+          key: verdique
+          value: Grün
+        -
+          key: flareon
+          value: Rot
+        -
+          key: sunella
+          value: Orange
+        -
+          key: blushra
+          value: Rosa
+      type: select
+      display: 'Rahmenfarbe (oben)'
+      localizable: false
+      width: 50
+      placeholder: 'Bitte wählen...'
+      clearable: true
+      if:
+        has_border: 'equals true'
+  -
+    handle: border_bottom_color
+    field:
+      options:
+        -
+          key: mystiris
+          value: Violett
+        -
+          key: verdique
+          value: Grün
+        -
+          key: flareon
+          value: Rot
+        -
+          key: sunella
+          value: Orange
+        -
+          key: blushra
+          value: Rosa
+      type: select
+      display: 'Rahmenfarbe (unten)'
+      localizable: false
+      width: 50
+      placeholder: 'Bitte wählen...'
+      clearable: true
+      if:
+        has_border: 'equals true'

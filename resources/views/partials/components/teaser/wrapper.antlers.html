@@ -1,0 +1,23 @@
+{{ partial:layout/outer class="mt-40 lg:mt-80" }}
+
+  <div id="teaser-masonry-container" class="max-w-teaser-container mx-auto">
+
+    {{ teasers }}
+
+      {{ if type == 'teaser_agenda' }}
+        {{ partial:agenda/teaser tag="{{ "Veranstaltung" | trans }}" border_class="{{ border_color :index="index" }}" }}
+      {{ /if }}
+
+      {{ if type == 'teaser_publication' }}
+        {{ partial:publications/teaser border_class="{{ border_color :index="index" }}" }}
+      {{ /if }}
+
+      {{ if type == 'teaser_manual' }}
+        {{ partial:components/teaser/item border_class="{{ border_color :index="index" }}" manual="true" }}
+      {{ /if }}
+      
+    {{ /teasers }}
+    
+  </div>
+  
+{{ /partial:layout/outer }}

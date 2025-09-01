@@ -1,0 +1,21 @@
+title: Asset
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: alt_de
+            field:
+              type: text
+              display: Alt-Text
+              localizable: false
+              instructions: 'Beschreibung des Bildes, Deutsch'
+          -
+            handle: alt_en
+            field:
+              type: text
+              display: Alt-Text
+              localizable: false
+              instructions: 'Beschreibung des Bildes, Englisch'

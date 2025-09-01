@@ -1,0 +1,185 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: theme
+            field:
+              type: color
+              display: Theme
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: preview_image
+            field:
+              max_files: 1
+              container: assets
+              type: assets
+              display: Vorschaubild
+              instructions: 'Vorschaubild für Hompage-Teaser und Projekt-Übersichtsseite'
+              folder: work
+          -
+            handle: elements
+            field:
+              type: replicator
+              display: Inhalte
+              collapse: true
+              sets:
+                main_elements:
+                  display: Hauptelemente
+                  icon: addon-boxes-stack
+                  sets:
+                    main_image:
+                      display: Hauptbild
+                      instructions: 'Hauptbild hinzufügen'
+                      icon: media-image-picture-orientation
+                      fields:
+                        -
+                          handle: main_image
+                          field:
+                            max_files: 1
+                            container: assets
+                            folder: work
+                            type: assets
+                            display: Titelbild
+                            instructions: 'Titelbild mit optionalem Titel hinzufügen.'
+                        -
+                          handle: multiline_title
+                          field:
+                            type: textarea
+                            display: Titel
+                            instructions: 'Mehrzeiliger Titel hinzufügen (optional).'
+                        -
+                          handle: title_position
+                          field:
+                            options:
+                              work-title-top: Oben
+                              work-title-center: Mitte
+                              work-title-bottom: Unten
+                            default: top-left
+                            type: select
+                            display: 'Position Titel'
+                    single_image:
+                      display: Einzelbild
+                      instructions: 'Einzelbild hinzufügen'
+                      icon: media-image-picture-orientation
+                      fields:
+                        -
+                          handle: background
+                          field:
+                            type: toggle
+                            display: Hintergrund
+                            instructions: 'Falls aktiv, wird der Hintergrund vom Projekt übernommen. Ansonsten ist dieser weiss.'
+                            default: true
+                        -
+                          handle: single_image
+                          field:
+                            max_files: 1
+                            container: assets
+                            folder: work
+                            type: assets
+                            display: Einzelbild
+                        -
+                          handle: caption
+                          field:
+                            type: textarea
+                            display: Beschreibung
+                    grid_images:
+                      display: Bildraster
+                      instructions: 'Bildraster mit mehreren Bildern hinzufügen.'
+                      icon: dashboard-layout
+                      fields:
+                        -
+                          handle: element
+                          field:
+                            type: replicator
+                            display: Element
+                            sets:
+                              neue_set-gruppe:
+                                display: 'Neue Set-Gruppe'
+                                sets:
+                                  element:
+                                    display: Element
+                                    icon: text-formatting-image-top
+                                    fields:
+                                      -
+                                        handle: image
+                                        field:
+                                          max_files: 1
+                                          container: assets
+                                          folder: work
+                                          type: assets
+                                          display: Bild
+                                      -
+                                        handle: caption
+                                        field:
+                                          type: textarea
+                                          display: Text
+                                      -
+                                        handle: text_position
+                                        field:
+                                          options:
+                                            work-text-top: Oben
+                                            work-text-center: Mitte
+                                            work-text-bottom: Unten
+                                          default: work-text-top
+                                          type: select
+                                          display: 'Position Text'
+                    main_text:
+                      display: Haupttext
+                      instructions: 'Haupttext hinzufügen'
+                      icon: text-formatting-all-caps
+                      fields:
+                        -
+                          handle: text
+                          field:
+                            buttons:
+                              - unorderedlist
+                              - removeformat
+                              - anchor
+                            toolbar_mode: floating
+                            remove_empty_nodes: true
+                            type: bard
+                            display: Text
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - work
+              max_items: 1
+              listable: false
+              localizable: true
+          -
+            handle: category
+            field:
+              type: terms
+              taxonomies:
+                - category
+              display: Kategorie
+              mode: select
+          -
+            handle: page_class
+            field:
+              default: page-work
+              type: hidden
+              display: 'Seiten CSS'
+title: Work

@@ -1,0 +1,17 @@
+{{ partial:layout/article 
+  class="{{ content_has_border ? 'py-10 lg:py-14' : '' }} {{ content_border_top_color ? 'border-t-6 lg:border-t-9 border-{{ content_border_top_color }}' : '' }} {{ content_border_bottom_color ? 'border-b-6 lg:border-b-9 border-{{ content_border_bottom_color }}' : 'pb-10 lg:pb-14' }} {{ class }}" }}
+  {{ editor }}
+    {{ if type == 'text' }}
+      {{ text }}
+    {{ /if }}
+    {{ if type == 'link' }}
+      {{ partial:components/links/link }}
+    {{ /if }}
+    {{ if type == 'link_mail' }}
+      {{ partial:components/links/link_mail }}
+    {{ /if }}
+    {{ if type == 'link_phone' }}
+      {{ partial:components/links/link_phone }}
+    {{ /if }}
+  {{ /editor }}
+{{ /partial:layout/article }}

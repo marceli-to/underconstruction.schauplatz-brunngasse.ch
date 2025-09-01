@@ -1,0 +1,25 @@
+{{ partial:layout/head }}
+
+{{ partial:layout/body }}
+
+  {{ partial:layout/outer class="flex-grow" }}
+      <main 
+        role="main" 
+        class="w-full flex flex-col items-center mt-40 lg:mt-60">
+      <div class="mb-20">
+        {{ partial:icons/logo class="w-250 lg:w-[400px] h-auto" }}
+      </div>
+      <p class="max-w-lg lg:max-w-[768px] text-center text-pretty text-md md:text-lg lg:text-2xl px-15">
+        Unsere Website befindet sich derzeit im Aufbau und wird bald aufgeschaltet. Schauen Sie gerne in Kürze wieder vorbei – wir freuen uns auf Ihren Besuch!
+      </p>
+    </main>
+  {{ /partial:layout/outer }}
+
+  {{ slot:footer }}
+    {{ partial:layout/footer }}
+  {{ /slot:footer }}
+
+{{ /partial:layout/body }}
+
+</html>
+{{ partial:layout/credits }}

@@ -1,0 +1,35 @@
+title: Einzelbild
+fields:
+  -
+    handle: image
+    field:
+      max_files: 1
+      container: assets
+      type: assets
+      display: Bild
+      localizable: false
+      width: 66
+  -
+    handle: lightbox_background
+    field:
+      options:
+        -
+          key: mystiris
+          value: Violett
+        -
+          key: verdique
+          value: Grün
+        -
+          key: flareon
+          value: Rot
+        -
+          key: sunella
+          value: Orange
+        -
+          key: blushra
+          value: Rosa
+      type: select
+      display: Hintergrund (Lightbox)
+      localizable: false
+      width: 33
+      default: mystiris
